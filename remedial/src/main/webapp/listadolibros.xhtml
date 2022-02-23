@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="Template/plantilla.xhtml">
+	<ui:define name="title">
+    	Listado de Libros
+        
+    </ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable var="lib" class="table table-dark"
+				value="#{librosBean.libros}">
+				<h:column>
+
+					<f:facet name="header">Titulo</f:facet>
+			#{lib.titulo}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Editorial</f:facet>
+			#{lib.editorial}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Categoria</f:facet>
+			#{lib.categoria}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Autor</f:facet>
+			#{lib.autor}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton 
+						action="#{librosBean.editar(lib.titulo)}" value="Editar"
+						immediate="true" />
+
+				</h:column>
+		
+		</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
+
+
+
+
+
+

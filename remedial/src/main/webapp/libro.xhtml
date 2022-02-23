@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{librosBean.titulo}"></f:viewParam>
+		<f:viewAction action="#{librosBean.loadData()}" />
+
+	</f:metadata>
+</h:head>
+<ui:composition template="Template/plantilla.xhtml">
+    <ui:define name="title">
+    	Registrar Libros
+        
+    </ui:define>
+    <ui:define name="content">
+    	<div class="card-body">
+                  <h4 class="card-title">Registrar Libro</h4>
+                  
+                  <h:form class="forms-sample">
+                    <div class="form-group row">
+                      <label for="txttitulo" class="col-sm-3 col-form-label">Titulo</label>
+                        <h:inputText type="text" class="form-control" id="campoTitulo"
+                      placeholder="titulo" value="#{librosBean.libro.titulo}">
+                      <f:ajax execute="txtTitulo"
+                      render="campoEditorial campoCategoria campoAutor" 
+                      listener="#{librosBean.loadDataEditar()}"/>
+                      
+                      </h:inputText>
+                      
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Editorial</label>
+                      <div class="col-sm-9">
+                        
+                        <h:inputText class="form-control" id="campoEditorial" placejolder="Editorial" value="#{librosBean.libro.editorial}" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleInputMobile" class="col-sm-3 col-form-label">Categoria</label>
+                      <div class="col-sm-9">
+                        
+                      	<h:inputText class="form-control" id="campoCategoria"  placeholder="Categoria" value="#{librosBean.libro.categoria}" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleInputMobile" class="col-sm-3 col-form-label">Autor</label>
+                      <div class="col-sm-9">
+                        
+                      	<h:inputText class="form-control" id="campoAutor"  placeholder="Autor" value= "#{librosBean.libro.autor}" />
+                      </div>
+                    </div>
+                    
+                    <h:commandButton action="#{librosBean.guardar()}" value="Guardar" class="btn btn-primary mr-2"/>
+                    <button class="btn btn-light">Cancel</button>
+                    <button class="btn btn-light"><a class="nav-link" href="listadolibros.xhtml">Ver Libro</a></button>
+                  </h:form>
+                </div>
+       
+    </ui:define>
+ 
+</ui:composition>
+</html>
+     
+      
+      
+      
+      
+
+
